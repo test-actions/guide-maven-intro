@@ -23,7 +23,7 @@ jobs:
           echo "JDKS=$JDKS" >> $GITHUB_ENV
       - name: Create JDK matrix
         id: create-matrix
-        run: echo "::set-output name=matrix::[$JDKS]"
+        run: echo "::set-output name=matrix::{ \"jdk\" : [$JDKS] }"
   build:
     runs-on: ubuntu-latest
     needs: [set_java]

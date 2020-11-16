@@ -15,12 +15,12 @@ jobs:
       - name: Add JDK 8 to Java matrix
         run: |
           export JDKS=8
-          echo "::set-env name=JDKS::$JDKS"
+          echo "JDKS=$JDKS" >> $GITHUB_ENV
       - name: Add JDK 11 to Java matrix
         if: ${{ github.event_name == 'repository_dispatch'}}
         run: |
           export JDKS=$JDKS,11
-          echo "::set-env name=JDKS::$JDKS"
+          echo "JDKS=$JDKS" >> $GITHUB_ENV
       - name: Create JDK matrix
         id: create-matrix
         run: echo "::set-output name=matrix::[$JDKS]"
